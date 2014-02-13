@@ -15,6 +15,7 @@ var es = [querySelector('#s0'),
           querySelector('#s7'),
           querySelector('#s8'),
           querySelector('#s9')];
+var total = querySelector('#t');
 
 
 double phi(t, period) {
@@ -24,10 +25,13 @@ double phi(t, period) {
 double tick = 0.0;
 void handleTimeout(Timer t) {
   tick += 0.001;
+  double sum = 0.0;
   for (var i=0; i<10; i++) {
     var v = 50*(1+phi(tick, 1/(i+46)));
     es[i].value = v.toString();
+    sum += v;
   }
+  total.value = (sum/10.0).toString();
 }
 
 void main() {
